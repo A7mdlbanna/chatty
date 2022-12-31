@@ -9,7 +9,7 @@ part 'chat_state.dart';
 
 class ChatCubit extends Cubit<ChatState> {
   ChatCubit() : super(ChatInitial());
-  
+
   String messagesCol = 'messages';
   FirebaseFirestore database = FirebaseFirestore.instance;
 
@@ -22,5 +22,8 @@ class ChatCubit extends Cubit<ChatState> {
   Future<void> sendMessage(Message message) async {
     debugPrint(message.toJson().toString());
     await database.collection(messagesCol).add(message.toJson());
+    chatController.jumpTo(chatController.position.minScrollExtent);
   }
+
+  ScrollController chatController = ScrollController();
 }
