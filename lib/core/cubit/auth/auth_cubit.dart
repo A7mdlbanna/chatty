@@ -17,8 +17,8 @@ class AuthCubit extends Cubit<AuthState> {
 
   void init() async {
     print('auth init');
-    users = await database.collection(usersCol).get();
     userName = CacheHelper.getString(key: 'username');
+    users = await database.collection(usersCol).get();
     print(userName);
     emit(Init());
   }

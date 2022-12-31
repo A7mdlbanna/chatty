@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="idiot.geeks.chat_room">
    <application
-        android:label="chat_room"
+        android:label="Chatty"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
