@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "712531455621",
+    "project_id": "chatty-cd20e",
+    "storage_bucket": "chatty-cd20e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712531455621:android:8a12e9c52f41f8bbc203ec",
+        "android_client_info": {
+          "package_name": "idiot.geeks.chat_room"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712531455621-tos04nq7dkftigr2jkjij3n5m64cfu3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbHY66MeN9XS3-a3x6bwKoyNKIA_Kzbcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712531455621-tos04nq7dkftigr2jkjij3n5m64cfu3q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "712531455621-6pc7lvsmf1gsc41shvcklql8agpknlva.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "q"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
