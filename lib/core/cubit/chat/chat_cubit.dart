@@ -10,12 +10,11 @@ part 'chat_state.dart';
 class ChatCubit extends Cubit<ChatState> {
   ChatCubit() : super(ChatInitial());
   
-  FirebaseFirestore database = FirebaseFirestore.instance;
   String messagesCol = 'messages';
+  FirebaseFirestore database = FirebaseFirestore.instance;
 
   Stream<QuerySnapshot>? messagesStream;
   void init() async{
-    // await sendMessage(Message(userName: 'A7mdlbanna', messageContent: 'hru', time: DateTime.now()));
     messagesStream = database.collection(messagesCol).orderBy('time', descending: false).snapshots();
     emit(Init());
   }

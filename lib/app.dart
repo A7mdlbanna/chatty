@@ -1,3 +1,4 @@
+import 'package:chatty/core/cubit/auth/auth_cubit.dart';
 import 'package:chatty/core/model/message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,11 @@ class ChatRoom extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
-      home: BlocProvider(
-        create: (context) =>
-        ChatCubit()
-          ..init(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => ChatCubit()..init(),),
+          BlocProvider(create: (context) => AuthCubit(),),
+        ],
         child: BlocBuilder<ChatCubit, ChatState>(
           builder: (context, state) {
             ChatCubit chat = BlocProvider.of(context);
@@ -35,8 +37,8 @@ class ChatRoom extends StatelessWidget {
                         Message message = Message.fromJson(document.data() as Map<String, dynamic>);
                         debugPrint(message.toJson().toString());
                         return ListTile(
-                          title: Text(message.userName, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.cyan)),
-                          subtitle: Text(message.messageContent, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),),
+                          title: Text(message.userName, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.cyan)),
+                          subtitle: Text(message.messageContent, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),),
                           trailing: Text(DateFormat('jm').format(message.time)),
                         );
                       }).toList(),
