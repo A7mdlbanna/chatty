@@ -91,8 +91,8 @@ class ChatScreen extends StatelessWidget {
                         if (snapshot.connectionState == ConnectionState.waiting) {
                           return const Center(child: CircularProgressIndicator(),);
                         }
-                        return snapshot.data == null
-                            ? const SizedBox.shrink()
+                        return snapshot.data == null || snapshot.data!.docs.isEmpty
+                            ? Center(child: Image.asset('assets/images/no_messages.png'),)
                             : Container(
                                 color: Colors.white,
                                 child: ListView(

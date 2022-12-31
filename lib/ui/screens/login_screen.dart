@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget {
           appBar: AppBar(
             toolbarHeight: 0,
             backgroundColor: Colors.white,
-            title: Center(),
+            title: const Center(),
             elevation: 0,
             systemOverlayStyle:
                 const SystemUiOverlayStyle(statusBarColor: Colors.white),
@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
             color: Colors.white,
             child: Center(
               child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 child: Padding(
                   padding: const EdgeInsets.all(25.0),
                   child: Form(
@@ -37,16 +37,15 @@ class LoginScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.asset(
-                            "assets/images/e3a198e2871c6605597e04400b84c7491111.png"),
+                        Align(alignment: Alignment.center, child: Image.asset("assets/images/login.png")),
                         const SizedBox(height: 60),
-                        Text(
+                        const Text(
                           "Enter Your Username",
                           style: TextStyle(
                             color: Color(0xC00E5340),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         TextFormField(
@@ -54,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(color: Color(0xC00E5340)),
+                              borderSide: const BorderSide(color: Color(0xC00E5340)),
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -76,12 +75,12 @@ class LoginScreen extends StatelessWidget {
                             return null;
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 40,
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            color: Color(0xC00E5340),
+                            color: const Color(0xC00E5340),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           width: double.infinity,
@@ -89,20 +88,20 @@ class LoginScreen extends StatelessWidget {
                             onPressed: () async {
                               if (Formkey.currentState!.validate()) {
                                 if(await cubit.login()){
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ChatScreen(),),);
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ChatScreen(),),);
                                   showToast(msg: cubit.msg, state: ToastStates.SUCCESS);
                                 } else{
                                   showToast(msg: cubit.msg, state: ToastStates.ERROR);
                                 }
                               }
                             },
-                            child: Text(
+                            child: const Text(
                               'LOGIN',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 40,
                         ),
                       ],
