@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart' as intl;
 import 'package:meta/meta.dart';
 
 import '../../model/message.dart';
@@ -21,9 +22,27 @@ class ChatCubit extends Cubit<ChatState> {
 
   Future<void> sendMessage(Message message) async {
     debugPrint(message.toJson().toString());
+    msgController.clear();
     await database.collection(messagesCol).add(message.toJson());
     chatController.jumpTo(chatController.position.minScrollExtent);
   }
 
   ScrollController chatController = ScrollController();
+  TextEditingController msgController = TextEditingController();
+
+  TextDirection textDirection = TextDirection.ltr;
+
+  void onTextChange(String text){
+    if(text.isEmpty){
+      textDirection = TextDirection.ltr;
+      emit(OnTextChange());
+      return;
+    }
+    textDirection = getDirection(text);
+    emit(OnTextChange());
+  }
+
+  bool checkDirectionality(text) => intl.Bidi.detectRtlDirectionality(text);
+
+  TextDirection getDirection(text) => checkDirectionality(text) ? TextDirection.rtl : TextDirection.ltr;
 }
